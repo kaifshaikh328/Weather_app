@@ -2,7 +2,7 @@ import {React,useState} from 'react'
 import './App.css'
 import cloud from './assets/cloud.png'
 import sun from './assets/sun.png'
-import rain from './assets/cloudy (2).png'
+import rain from './assets/rain.png'
 
 
 
@@ -54,15 +54,17 @@ const App = () => {
         {weatherData && (
           <div className='block-display:block p-7 bg-gray-100 rounded-lg w-full h-auto items-center justify-center'>
             <h2>{weatherData.city}  </h2>
-             {weatherData.temp < 18 && (
-              <img className='w-10' src={rain} alt="Sun" />
-          )}
-            {weatherData.temp < 23 && (
-              <img className='w-10' src={cloud} alt="Cloud" />
-          )}
-              {weatherData.temp < 30 && (
-              <img className='w-10' src={sun} alt="Rain" />
-          )}
+            {weatherData.temp < 18 && (
+  <img className='w-10' src={rain} alt="Rain" />
+)}
+
+{weatherData.temp >= 18 && weatherData.temp < 23 && (
+  <img className='w-10' src={cloud} alt="Cloud" />
+)}
+
+{weatherData.temp >= 23 && (
+  <img className='w-10' src={sun} alt="Sun" />
+)}
             <p>Temperature: {weatherData.temp} °C</p>
       
             <p>Description: {weatherData.description}</p>
@@ -74,7 +76,7 @@ const App = () => {
           <h1>Location accepter:</h1>
         <input type="text" placeholder="Enter location"  value={city}
             onChange={(e) => setCity(e.target.value)}
-            required required /><br />
+            required /><br />
         <div className="button">
         <button  onClick={fetchWeatherData}>Analysis Weather</button>
         </div>
