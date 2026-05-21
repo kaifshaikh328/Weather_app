@@ -3,6 +3,7 @@ import './App.css'
 import cloud from './assets/cloud.png'
 import sun from './assets/sun.png'
 import rain from './assets/rain.png'
+import description from './assets/description.png'
 
 
 
@@ -45,16 +46,17 @@ const App = () => {
 
   return (
     
-    <div >
-      
-      <div className='br-1 solid bg-gray-200 rounded-lg border-1px w-full h-auto p-4'>
+    <div style={{ backgroundImage: `url(${description})`, backgroundSize: 'full', minHeight: '100vh' }} className=" items-center justify-center"  >  
+       
+      <p className='br-1 solid bg-gray-200 rounded-lg border-1px w-full h-auto p-4'>
       <h1>Weather Forecasting Center</h1>
-      </div>
-      
+      </p>
+     
       <div className='w-96 h-auto m-4 items-center justify-center '>
         {error && <p className="error">{error}</p>}
         {weatherData && (
           <div className='block-display:block p-7 bg-gray-100 rounded-lg w-full h-auto items-center justify-center'>
+    
             <h2>{weatherData.city}  </h2>
             {weatherData.temp < 18 && (
   <img className='w-10' src={rain} alt="Rain" />
@@ -73,7 +75,8 @@ const App = () => {
           </div>
         )}
       </div>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center" 
+      >
         <div className="block-display:block p-7 bg-gray-100 rounded-lg w-96 h-auto items-center justify-center">
           <h1>Location accepter:</h1>
         <input type="text" placeholder="Enter location"  value={city}
@@ -85,6 +88,7 @@ const App = () => {
         </div>
        </div> 
 
+        
 
     </div>
 
