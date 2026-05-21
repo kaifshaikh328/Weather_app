@@ -48,9 +48,9 @@ const App = () => {
     
     <div style={{ backgroundImage: `url(${description})`, backgroundSize: 'full', minHeight: '100vh' }} className=" items-center justify-center"  >  
        
-      <p className='br-1 solid bg-gray-200 rounded-lg border-1px w-full h-auto p-4'>
+      <div className='br-1 solid bg-gray-200 rounded-lg border-1px w-full h-auto p-4'>
       <h1>Weather Forecasting Center</h1>
-      </p>
+      </div>
      
       <div className='w-96 h-auto m-4 items-center justify-center '>
         {error && <p className="error">{error}</p>}
