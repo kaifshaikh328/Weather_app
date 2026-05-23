@@ -4,6 +4,8 @@ import cloud from './assets/cloud.png'
 import sun from './assets/sun.png'
 import rain from './assets/rain.png'
 import description from './assets/description.png'
+import night from './assets/night.png'
+import { useEffect } from "react";
 
 
 
@@ -12,6 +14,7 @@ const App = () => {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
+  const [isNight, setIsNight] = useState(false);
 
   const fetchWeatherData = async () => {
     if (!city) {
@@ -42,11 +45,19 @@ const App = () => {
   }
 
   
+  useEffect(() => {
+    const cuttentHour = new Date().getHours();
+    if (cuttentHour >= 18 || cuttentHour < 6) {
+      setIsNight(true);
+    } else {
+      setIsNight(false);
+    }
+  }, []);
 
 
   return (
     
-    <div style={{ backgroundImage: `url(${description})`, backgroundSize: 'full', minHeight: '100vh' }} className=" items-center justify-center"  >  
+    <div style={{ backgroundImage:isNight? `url(${night})`:`url(${description})`, backgroundSize: 'full', minHeight: '100vh' }} className=" items-center justify-center"  >  
        
       <div className='br-1 solid bg-gray-200 rounded-lg border-1px w-full h-auto p-4'>
       <h1>Weather Forecasting Center</h1>
